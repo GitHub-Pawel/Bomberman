@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_bomberman" default="compile.module.bomberman">
+  <dirname property="module.bomberman.basedir" file="${ant.file.module_bomberman}"/>
+  
+  <property name="module.jdk.home.bomberman" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bomberman" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bomberman" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bomberman" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="bomberman.output.dir" value="${module.bomberman.basedir}/out/production/Bomberman"/>
+  <property name="bomberman.testoutput.dir" value="${module.bomberman.basedir}/out/test/Bomberman"/>
+  
+  <path id="bomberman.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bomberman.module.production.classpath">
+    <path refid="${module.jdk.classpath.bomberman}"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.0-M1/junit-jupiter-api-5.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.0-M1/junit-platform-commons-1.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  <path id="bomberman.runtime.production.module.classpath">
+    <pathelement location="${bomberman.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.0-M1/junit-jupiter-api-5.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.0-M1/junit-platform-commons-1.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  <path id="bomberman.module.classpath">
+    <path refid="${module.jdk.classpath.bomberman}"/>
+    <pathelement location="${bomberman.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.0-M1/junit-jupiter-api-5.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.0-M1/junit-platform-commons-1.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  <path id="bomberman.runtime.module.classpath">
+    <pathelement location="${bomberman.testoutput.dir}"/>
+    <pathelement location="${bomberman.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/jupiter/junit-jupiter-api/5.4.0-M1/junit-jupiter-api-5.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/junit/platform/junit-platform-commons/1.4.0-M1/junit-platform-commons-1.4.0-M1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bomberman">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bomberman">
+    <patternset refid="excluded.from.module.bomberman"/>
+  </patternset>
+  
+  <path id="bomberman.module.sourcepath">
+    <dirset dir="${module.bomberman.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bomberman" depends="compile.module.bomberman.production,compile.module.bomberman.tests" description="Compile module Bomberman"/>
+  
+  <target name="compile.module.bomberman.production" depends="register.custom.compilers" description="Compile module Bomberman; production classes">
+    <mkdir dir="${bomberman.output.dir}"/>
+    <javac2 destdir="${bomberman.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bomberman}/javac">
+      <compilerarg line="${compiler.args.bomberman}"/>
+      <bootclasspath refid="bomberman.module.bootclasspath"/>
+      <classpath refid="bomberman.module.production.classpath"/>
+      <src refid="bomberman.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bomberman"/>
+    </javac2>
+    
+    <copy todir="${bomberman.output.dir}">
+      <fileset dir="${module.bomberman.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bomberman.tests" depends="register.custom.compilers,compile.module.bomberman.production" description="compile module Bomberman; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.bomberman" description="cleanup module">
+    <delete dir="${bomberman.output.dir}"/>
+    <delete dir="${bomberman.testoutput.dir}"/>
+  </target>
+</project>
