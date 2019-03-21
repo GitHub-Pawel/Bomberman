@@ -21,10 +21,17 @@ public class MainMenuGUI extends JFrame {
     private JButton singlePlayerButton = new JButton("", new ImageIcon("menuImages\\singleplayerButton.jpg"));
     private JButton multiplayerButton = new JButton("", new ImageIcon("menuImages\\multiplayerButton.jpg"));
     private JButton cooperativeButton = new JButton("", new ImageIcon("menuImages\\cooperativeButton.jpg"));
+    private JButton onlineButton = new JButton("", new ImageIcon("menuImages\\onlineButton.jpg"));
     private JButton guideButton = new JButton("", new ImageIcon("menuImages\\guideButton.jpg"));
     private JButton quitButton = new JButton("", new ImageIcon("menuImages\\quitButton.jpg"));
     private JButton optionsButton = new JButton("", new ImageIcon("menuImages\\optionsButton.jpg"));
     private JButton backButton = new JButton("", new ImageIcon("menuImages\\backButton.jpg"));
+
+    // Online label
+    private JLabel onlineLabel;
+
+    private JButton createServerButton = new JButton("", new ImageIcon("menuImages\\createServerButton.jpg"));
+    private JButton joinServerButton = new JButton("", new ImageIcon("menuImages\\joinServerButton.jpg"));
 
     // Guide label
     private JLabel guideLabel;
@@ -62,14 +69,17 @@ public class MainMenuGUI extends JFrame {
         mainLabel = new JLabel("", backgroundImage, JLabel.CENTER);
         mainLabel.setBounds(0, 0, 700, 700);
 
-        singlePlayerButton.setBounds(180, 270, 340, 50);
+        singlePlayerButton.setBounds(180, 210, 340, 50);
         singlePlayerButton.setVisible(true);
 
-        multiplayerButton.setBounds(180, 330, 340, 50);
+        multiplayerButton.setBounds(180, 270, 340, 50);
         multiplayerButton.setVisible(true);
 
-        cooperativeButton.setBounds(180, 390, 340, 50);
+        cooperativeButton.setBounds(180, 330, 340, 50);
         cooperativeButton.setVisible(true);
+
+        onlineButton.setBounds(180, 390, 340, 50);
+        onlineButton.setVisible(true);
 
         guideButton.setBounds(180, 470, 340, 50);
         guideButton.setVisible(true);
@@ -80,6 +90,8 @@ public class MainMenuGUI extends JFrame {
         quitButton.setBounds(180, 590, 340, 50);
         quitButton.setVisible(true);
 
+        onlineLabel = new JLabel("", backgroundImage, JLabel.CENTER);
+        onlineLabel.setBounds(0, 0, 700, 700);
 
         guideLabel = new JLabel("", guideImage, JLabel.CENTER);
         guideLabel.setBounds(0, 0, 700, 700);
@@ -89,6 +101,12 @@ public class MainMenuGUI extends JFrame {
 
         backButton.setBounds(520, 620, 160, 40);
         backButton.setVisible(true);
+
+        createServerButton.setBounds(180, 330, 340, 50);
+        createServerButton.setVisible(true);
+
+        joinServerButton.setBounds(180, 390, 340, 50);
+        joinServerButton.setVisible(true);
 
         increaseFieldSizeButton.setBounds(50, 330, 160, 40);
         increaseFieldSizeButton.setVisible(true);
@@ -112,6 +130,7 @@ public class MainMenuGUI extends JFrame {
         mainLabel.add(singlePlayerButton);
         mainLabel.add(multiplayerButton);
         mainLabel.add(cooperativeButton);
+        mainLabel.add(onlineButton);
         mainLabel.add(guideButton);
         mainLabel.add(optionsButton);
         mainLabel.add(quitButton);
@@ -138,6 +157,17 @@ public class MainMenuGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 game = new GameEngine(3, fieldSize, numberOfGhosts);
                 dispose();
+            }
+        });
+        onlineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().removeAll();
+                onlineLabel.add(backButton);
+                onlineLabel.add(createServerButton);
+                onlineLabel.add(joinServerButton);
+                add(onlineLabel);
+                repaint();
             }
         });
         guideButton.addActionListener(new ActionListener() {
