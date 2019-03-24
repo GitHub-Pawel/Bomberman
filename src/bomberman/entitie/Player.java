@@ -16,11 +16,12 @@ public class Player extends Block {
 
     /********************************************************************
      *                         Constructor                              *
-     * @param startPosition                                             *
+     * @param startPositionX
+     * @param startPositionY                                            *
      ********************************************************************/
 
-    public Player(int startPosition){
-        super(startPosition, startPosition);     // By default player is in the top left corner
+    public Player(int startPositionX, int startPositionY){
+        super(startPositionX, startPositionY);     // By default player is in the top left corner
         this.setImage(new ImageIcon("images\\player.jpg"));
         this.stillAlive = true;
         this.limitOfBombs = 1;

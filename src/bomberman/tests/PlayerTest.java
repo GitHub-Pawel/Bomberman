@@ -9,7 +9,7 @@ class PlayerTest {
 
     @Test
     public void isStillAlive(){         // Checking state of player life
-        Player player = new Player(1);
+        Player player = new Player(1, 1);
 
         assertTrue(player.isStillAlive());
         player.setStillAlive(false);

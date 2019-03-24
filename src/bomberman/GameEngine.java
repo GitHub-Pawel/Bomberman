@@ -51,8 +51,8 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
             this.numberOfPlayers = 2;
 
         this.players = new Player[this.numberOfPlayers];
-        this.players[0] = new Player(1);
-        if (this.numberOfPlayers == 2) this.players[1] = new Player(this.board.getTableLength()-2);
+        this.players[0] = new Player(1, 1);
+        if (this.numberOfPlayers == 2) this.players[1] = new Player(this.board.getTableLength()-2, this.board.getTableLength()-2);
 
         if (gameMode == 1){                             // Singleplayer mode
             this.keyboard.setSecondId((byte) 0);        // It allows using keys assigned to player2 as well
