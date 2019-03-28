@@ -30,6 +30,7 @@ public class ClientEngine implements ClientKeyboardObserver {
     @Override
     public void moveUp() {
         //wyslij wiadomosc moveUp na serwer
+        //zwraca id klienta zeby serwer mogl odroznic
     }
     @Override
     public void moveDown() {
