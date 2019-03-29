@@ -229,6 +229,20 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
         move(id, 0 ,1);
     }
 
+    @Override
+    public void moveUp() {
+
+    }
+
+    @Override
+    public void moveDown() {}
+    @Override
+    public void moveLeft() {}
+    @Override
+    public void moveRight() {}
+    @Override
+    public void plantBomb() {}
+
     /********************************************************************
      *                  Plant The Bomb                                  *
      ********************************************************************/

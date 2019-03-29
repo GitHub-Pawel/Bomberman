@@ -77,33 +77,43 @@ public class Keyboard extends JFrame implements KeyListener {
         switch (key){
             case KeyEvent.VK_W:
                 keyboardObserver.moveUp((byte) 0);
+                keyboardObserver.moveUp();
                 break;
             case KeyEvent.VK_S:
                 keyboardObserver.moveDown((byte) 0);
+                keyboardObserver.moveDown();
                 break;
             case KeyEvent.VK_A:
                 keyboardObserver.moveLeft((byte) 0);
+                keyboardObserver.moveLeft();
                 break;
             case KeyEvent.VK_D:
                 keyboardObserver.moveRight((byte) 0);
+                keyboardObserver.moveRight();
                 break;
             case KeyEvent.VK_SPACE:
                 keyboardObserver.plantBomb((byte) 0);
+                keyboardObserver.plantBomb();
                 break;
             case KeyEvent.VK_UP:
                 keyboardObserver.moveUp(secondId);
+                keyboardObserver.moveUp();
                 break;
             case KeyEvent.VK_DOWN:
                 keyboardObserver.moveDown(secondId);
+                keyboardObserver.moveDown();
                 break;
             case KeyEvent.VK_LEFT:
                 keyboardObserver.moveLeft(secondId);
+                keyboardObserver.moveLeft();
                 break;
             case KeyEvent.VK_RIGHT:
                 keyboardObserver.moveRight(secondId);
+                keyboardObserver.moveRight();
                 break;
             case KeyEvent.VK_ENTER:
                 keyboardObserver.plantBomb(secondId);
+                keyboardObserver.plantBomb();
                 break;
         }
     }

@@ -2,11 +2,11 @@ package bomberman.network;
 
 import bomberman.component.Board;
 import bomberman.gui.BombermanGUI;
-import bomberman.inputOutput.ClientKeyboard;
+import bomberman.inputOutput.Keyboard;
 import bomberman.observers.*;
 
-public class ClientEngine implements ClientKeyboardObserver {
-    private ClientKeyboard clientKeyboard;
+public class ClientEngine implements KeyboardObserver {
+    private Keyboard keyboard;
     private BombermanGUI frame;
     private Board board;
     private Client client;
@@ -18,12 +18,12 @@ public class ClientEngine implements ClientKeyboardObserver {
      ********************************************************************/
 
     public ClientEngine(String serverAddress, int port){
-        this.clientKeyboard = new ClientKeyboard();
+        this.keyboard = new Keyboard();
         this.client = new Client(serverAddress, port);
         //this.board = //pobranie tablicy z serwera//
         //this.clientId = //pobranie id przydzielonego przez serwer (0-3)//
         this.frame = new BombermanGUI(board);
-        this.clientKeyboard.subscribe(this);
+        this.keyboard.subscribe(this);
 
     }
 
@@ -46,8 +46,17 @@ public class ClientEngine implements ClientKeyboardObserver {
     }
     @Override
     public void plantBomb() {
-
     }
 
+    @Override
+    public void moveUp(byte id) {}
+    @Override
+    public void moveDown(byte id) {}
+    @Override
+    public void moveLeft(byte id) {}
+    @Override
+    public void moveRight(byte id) {}
+    @Override
+    public void plantBomb(byte id) {}
 
 }
