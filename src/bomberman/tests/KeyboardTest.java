@@ -2,7 +2,7 @@ package bomberman.tests;
 
 import bomberman.entitie.Bomb;
 import bomberman.entitie.Player;
-import bomberman.GameEngine;
+import bomberman.engine.GameEngine;
 import org.junit.jupiter.api.Test;
 
 import java.awt.event.KeyEvent;

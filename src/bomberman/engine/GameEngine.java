@@ -1,4 +1,4 @@
-package bomberman;
+package bomberman.engine;
 
 import bomberman.component.*;
 import bomberman.entitie.*;

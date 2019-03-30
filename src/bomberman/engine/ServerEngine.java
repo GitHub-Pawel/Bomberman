@@ -1,4 +1,6 @@
-package bomberman.network;
+package bomberman.engine;
+
+import bomberman.network.*;
 import bomberman.component.Block;
 import bomberman.component.Board;
 import bomberman.entitie.Bomb;
@@ -12,6 +14,7 @@ import bomberman.inputOutput.Sound;
 import bomberman.observers.BombObserver;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Random;
 
 /*
@@ -34,7 +37,7 @@ public class ServerEngine implements BombObserver {
      *                         Constructor                              *
      ********************************************************************/
 
-    public ServerEngine(int port, int numberOfPlayers, int fieldSize) {
+    public ServerEngine(int port, int numberOfPlayers, int fieldSize) throws IOException {
         this.server = new Server(port);
         this.board = new Board(fieldSize);
         this.numberOfPlayers = numberOfPlayers;

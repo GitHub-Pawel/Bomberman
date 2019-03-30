@@ -1,6 +1,6 @@
 package bomberman.gui;
 
-import bomberman.GameEngine;
+import bomberman.engine.GameEngine;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,5 +1,6 @@
-package bomberman.network;
+package bomberman.engine;
 
+import bomberman.network.*;
 import bomberman.component.Board;
 import bomberman.gui.BombermanGUI;
 import bomberman.inputOutput.Keyboard;

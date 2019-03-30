@@ -4,7 +4,7 @@ import bomberman.entitie.Bomb;
 import bomberman.entitie.Fire;
 import bomberman.entitie.basic.Floor;
 import bomberman.entitie.Player;
-import bomberman.GameEngine;
+import bomberman.engine.GameEngine;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
