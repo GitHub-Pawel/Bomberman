@@ -11,6 +11,7 @@ import bomberman.entitie.basic.Wall;
 import bomberman.entitie.box.Bonus;
 import bomberman.entitie.box.Case;
 import bomberman.inputOutput.Sound;
+import bomberman.observers.BoardObserver;
 import bomberman.observers.BombObserver;
 import bomberman.observers.KeyboardObserver;
 
@@ -44,12 +45,14 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
     public ServerEngine(int port, int numberOfPlayers, int fieldSize) throws IOException {
         this.board = new Board(fieldSize);
         this.numberOfPlayers = numberOfPlayers;
-        this.server = new Server(port, numberOfPlayers, this.board, this);
         this.players = new Player[this.numberOfPlayers];
         this.bombThreads = new Thread[200];        // 200 is maximum number of threads
         this.bombCount = 0;
 
-        if (numberOfPlayers == 2){
+        if (numberOfPlayers == 1) {
+            players[0] = new Player(1, 1);
+            board.getTable()[1][1] = players[0];
+        }else if (numberOfPlayers == 2){
             players[0] = new Player(1, 1);
             players[1] = new Player(this.board.getTableLength()-2, this.board.getTableLength()-2);
             board.getTable()[1][1] = players[0];
@@ -75,6 +78,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         insertCases();
         raffleBonus();
 
+        this.server = new Server(port, numberOfPlayers, this.board, this);
     }
 
     /********************************************************************

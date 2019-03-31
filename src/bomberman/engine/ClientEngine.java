@@ -67,5 +67,6 @@ public class ClientEngine implements KeyboardObserver, BoardObserver {
     @Override
     public void boardUpdate(Board board) {
         this.board = board;
+        frame.screenReload(this.board);
     }
 }

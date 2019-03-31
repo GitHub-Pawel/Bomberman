@@ -2,6 +2,7 @@ package bomberman.network;
 
 import bomberman.component.Board;
 import bomberman.engine.ServerEngine;
+import bomberman.entitie.Player;
 import bomberman.observers.KeyboardObserver;
 
 import java.awt.event.KeyEvent;

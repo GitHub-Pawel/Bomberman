@@ -49,7 +49,11 @@ public class BombermanGUI extends JFrame {
      *                         Screen reloading                         *
      ********************************************************************/
 
-    public void screenReload(){         // Refreshing the game field in depend of board state
+    public void screenReload(){
+        this.screenReload(this.board);      // Refreshing the game field in depend of board state
+    }
+
+    public void screenReload(Board board){         // Refreshing the game field in depend of board state
         for (int i = 0; i < board.getTableLength(); i++) {
             for (int j = 0; j < board.getTableLength(); j++) {
                 try {
@@ -59,5 +63,6 @@ public class BombermanGUI extends JFrame {
             }
         }
     }
+
 
 }
