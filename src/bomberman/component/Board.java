@@ -2,8 +2,9 @@ package bomberman.component;
 
 import bomberman.entitie.basic.Floor;
 import bomberman.entitie.basic.Wall;
+import java.io.Serializable;
 
-public class Board {
+public class Board implements Serializable{
 
     private Block[][] table;        // game field
     private int tableLength;        // size of game field

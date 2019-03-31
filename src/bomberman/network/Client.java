@@ -1,20 +1,36 @@
 package bomberman.network;
 
+import bomberman.component.Board;
+import java.awt.event.KeyEvent;
+import java.io.*;
 import java.net.Socket;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 
 public class Client {
+    /********************************************************************
+     *                         Properties                               *
+     ********************************************************************/
     private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
+    private String ip;
+    private int port;
 
-    public Client(){}
-    public Client(String ip, int port){}
 
-    public void tryToConnect(String ip, int port) {
+    /********************************************************************
+     *                         Constructor                              *
+     ********************************************************************/
+    public Client(){
+        this("localhost", 65432);
+    }
+
+    public Client(String ip, int port){
+        this.ip = ip;
+        this.port = port;
+    }
+
+
+    /********************************************************************
+     *                            Methods                               *
+     ********************************************************************/
+    public void startConnection(String ip, int port) {
         try {
             this.clientSocket = new Socket(ip, port);
         } catch (Exception e) {
@@ -22,37 +38,44 @@ public class Client {
                 Thread.sleep(1000, 33);       //try connect 30 times per second
             } catch (InterruptedException e1) {
             }
-            tryToConnect(ip, port);
+            startConnection(ip, port);
         }
     }
 
-    public void startConnection(String ip, int port) throws IOException {
-        tryToConnect(ip, port);
-        this.out = new PrintWriter(this.clientSocket.getOutputStream(), true);
-        this.in = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
+
+    public void sendKeyEvent(int keyEvent){
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            objectOutputStream.writeObject(keyEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void sendMessage(String msg){
-        this.out.println(msg);
+    public Board receiveBoard(){
+        Board board = null;
+        try{
+            ObjectInputStream objectInputStream = new ObjectInputStream(this.clientSocket.getInputStream());
+            board = (Board) objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return board;
     }
 
-
-    public void receiveMessage() throws IOException {
-        String resp = in.readLine();
-        System.out.println(resp);
-    }
 
     public void stopConnection() throws IOException {
-        in.close();
-        out.close();
         clientSocket.close();
     }
 
     public static void main(String[] args) throws IOException {
         Client client = new Client();
         client.startConnection("localhost", 65432);
-        client.sendMessage("hello server");
-        client.receiveMessage();
+        client.sendKeyEvent(KeyEvent.VK_RIGHT);
+        Board board = client.receiveBoard();
+        System.out.println(board.getTableLength());
         client.stopConnection();
     }
 }

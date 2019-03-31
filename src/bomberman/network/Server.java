@@ -4,24 +4,24 @@ import java.io.*;
 import java.net.ServerSocket;
 
 public class Server {
-    //=============dane==============
+    /********************************************************************
+     *                         Properties                               *
+     ********************************************************************/
     private ServerSocket serverSocket;
+    private Thread [] threadsOfClients;
     private int numberOfClients;
     private int port;
-    private Thread [] threadsOfClients;
 
 
-    //====================konstruktory===================
+    /********************************************************************
+     *                         Constructor                              *
+     ********************************************************************/
     public Server() throws IOException {
-        this.port = 65432;          //default port number
-        this.numberOfClients = 1;   //default number of clients
-        this.start();
+        this(65432, 1);
     }
 
     public Server(int port) throws IOException {
-        this.port = port;
-        this.numberOfClients = 1;   //default number of clients
-        this.start();
+        this(port, 1);
     }
 
     public Server(int port, int numberOfClients) throws IOException {
@@ -30,19 +30,21 @@ public class Server {
         this.start();
     }
 
-    //====================metody===================
-    public void start() throws IOException {    //TO DO: Why is throws exception needed?
-        this.serverSocket = new ServerSocket(this.port);     //Create a socket to connect with this server
-        connect();                                      //Connect with clients
+    /********************************************************************
+     *                            Methods                               *
+     ********************************************************************/
+    public void start() throws IOException {                    //TO DO: Why is throws exception needed?
+        this.serverSocket = new ServerSocket(this.port);        //Create a socket to connect with this server
+        connect();                                              //Connect with clients
     }
 
-    public void stop() throws IOException {     //TO DO: Why is throws exception needed?
-        this.stopThreads();
-        this.serverSocket.close();
+    public void stop() throws IOException {                     //TO DO: Why is throws exception needed?
+        this.stopThreads();                                     //Stop handling clients
+        this.serverSocket.close();                              //Close the server socket
     }
 
     public void connect() throws IOException {
-        this.threadsOfClients = new Thread[this.numberOfClients];
+        this.threadsOfClients = new Thread[this.numberOfClients];   //Each client is handled by another thread
         System.out.println("Waiting for clients ...");
 
         for (int i = 0; i<this.numberOfClients; ++i){
@@ -69,8 +71,7 @@ public class Server {
 
 
     public static void main(String[] args) throws IOException {     //TO DO: Why is throws exception needed?
-        Server server = new Server(65432, 1);
-        //server.start(65432);
+        Server server = new Server(65432);
         //server.stop();
     }
 }
