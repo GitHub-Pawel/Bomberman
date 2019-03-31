@@ -1,6 +1,10 @@
 package bomberman.network;
 
 import bomberman.component.Board;
+import bomberman.engine.ServerEngine;
+import bomberman.observers.KeyboardObserver;
+
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.Socket;
 import java.io.ObjectInputStream;
@@ -12,14 +16,19 @@ class ClientHandler implements Runnable{
      ********************************************************************/
     private final Socket client;
     private final int id;
+    private Board refereceToBoard;
+    private KeyboardObserver keyboardObserver;
+
 
 
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
-    public ClientHandler(Socket socket, int id){
+    public ClientHandler(Socket socket, int id, Board board, ServerEngine serverEngineSubscribe){
         this.client = socket;
         this.id = id;
+        this.refereceToBoard = board;
+        this.keyboardObserver = serverEngineSubscribe;
     }
 
 
@@ -48,26 +57,81 @@ class ClientHandler implements Runnable{
         }
     }
 
+    public void stopHandler() throws IOException {
+        this.client.close();
+    }
+
+    /********************************************************************
+     *                       Keyboard Observer                          *
+     ********************************************************************/
+
+    public void update(int key) {       // Execution the methods assigned to keys
+        switch (key){
+            case KeyEvent.VK_W:
+                keyboardObserver.moveUp((byte) this.id);
+                break;
+            case KeyEvent.VK_S:
+                keyboardObserver.moveDown((byte) this.id);
+                break;
+            case KeyEvent.VK_A:
+                keyboardObserver.moveLeft((byte) this.id);
+                break;
+            case KeyEvent.VK_D:
+                keyboardObserver.moveRight((byte) this.id);
+                break;
+            case KeyEvent.VK_SPACE:
+                keyboardObserver.plantBomb((byte) this.id);
+                break;
+            case KeyEvent.VK_UP:
+                keyboardObserver.moveUp((byte) this.id);
+                break;
+            case KeyEvent.VK_DOWN:
+                keyboardObserver.moveDown((byte) this.id);
+                break;
+            case KeyEvent.VK_LEFT:
+                keyboardObserver.moveLeft((byte) this.id);
+                break;
+            case KeyEvent.VK_RIGHT:
+                keyboardObserver.moveRight((byte) this.id);
+                break;
+            case KeyEvent.VK_ENTER:
+                keyboardObserver.plantBomb((byte) this.id);
+                break;
+        }
+    }
+
+    /********************************************************************
+     *                       Runnable method                            *
+     ********************************************************************/
+
 
     @Override
     public void run() {
-        /*
-        while (true){               //TO DO: Create disconnection system
+        while (true){
             try {
-                Thread.sleep(1000, 33);       //refresh 30 times per second
+                Thread.sleep(10);               //refresh 100 times per second
             } catch (InterruptedException e1) {
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+
+            this.sendBoard(this.refereceToBoard);
+            this.update(this.receiveKeyEvent());
         }
 
+        //TO DO: Create disconnection system
+        /*
         try {
             this.stopHandler();
         } catch (IOException e) {
             e.printStackTrace();
         }
         */
+    }
+}
 
+
+/*
+    @Override
+    public void run() {
         System.out.println(this.receiveKeyEvent());
         Board board = new Board(17);
         this.sendBoard(board);
@@ -77,8 +141,4 @@ class ClientHandler implements Runnable{
             e.printStackTrace();
         }
     }
-
-    public void stopHandler() throws IOException {
-        this.client.close();
-    }
-}
+*/

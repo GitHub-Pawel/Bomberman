@@ -1,5 +1,8 @@
 package bomberman.network;
 
+import bomberman.component.Board;
+import bomberman.engine.ServerEngine;
+
 import java.io.*;
 import java.net.ServerSocket;
 
@@ -11,22 +14,26 @@ public class Server {
     private Thread [] threadsOfClients;
     private int numberOfClients;
     private int port;
+    private Board refToBoard;
+    private ServerEngine refToEngine;
 
 
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
     public Server() throws IOException {
-        this(65432, 1);
+        this(65432, 1, null, null);
     }
 
     public Server(int port) throws IOException {
-        this(port, 1);
+        this(port, 1, null, null);
     }
 
-    public Server(int port, int numberOfClients) throws IOException {
+    public Server(int port, int numberOfClients, Board board, ServerEngine serverEngine) throws IOException {
         this.port = port;
         this.numberOfClients = numberOfClients;
+        this.refToBoard = board;
+        this.refToEngine = serverEngine;
         this.start();
     }
 
@@ -48,7 +55,7 @@ public class Server {
         System.out.println("Waiting for clients ...");
 
         for (int i = 0; i<this.numberOfClients; ++i){
-            this.threadsOfClients[i] = new Thread(new ClientHandler(this.serverSocket.accept(), i));
+            this.threadsOfClients[i] = new Thread(new ClientHandler(this.serverSocket.accept(), i, this.refToBoard, this.refToEngine));
             System.out.println("Connected Client NO.:" + i);
         }
 

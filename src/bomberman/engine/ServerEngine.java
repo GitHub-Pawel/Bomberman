@@ -12,6 +12,7 @@ import bomberman.entitie.box.Bonus;
 import bomberman.entitie.box.Case;
 import bomberman.inputOutput.Sound;
 import bomberman.observers.BombObserver;
+import bomberman.observers.KeyboardObserver;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -24,7 +25,7 @@ checkWin/checkDefeat/gameEnd -> zakonczenie gry
 metody moveUp/Down/Right/Left i plantBomb -> musza byc wywolywane z serwera po otrzymaniu wiadomosci
 */
 
-public class ServerEngine implements BombObserver {
+public class ServerEngine implements KeyboardObserver, BombObserver {
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
@@ -41,9 +42,9 @@ public class ServerEngine implements BombObserver {
      ********************************************************************/
 
     public ServerEngine(int port, int numberOfPlayers, int fieldSize) throws IOException {
-        this.server = new Server(port, numberOfPlayers);
         this.board = new Board(fieldSize);
         this.numberOfPlayers = numberOfPlayers;
+        this.server = new Server(port, numberOfPlayers, this.board, this);
         this.players = new Player[this.numberOfPlayers];
         this.bombThreads = new Thread[200];        // 200 is maximum number of threads
         this.bombCount = 0;
@@ -130,7 +131,10 @@ public class ServerEngine implements BombObserver {
             } catch (NullPointerException e) {
             }
         }
-        //frame.screenReload(); zamiast tego wyslij tablice do klientow
+        //frame.screenReload(); zamiast tego wyslij tablice do klientow - nie
+        //taka metoda jest niepotrzebna, bo kazdy watek do oblsugi poszczegolnych klientow
+        //ma referencje do obiektu board utworzonego w klsie ServerEngine,
+        //wiec bedzie ja rozsylac cyklicznie niezaleznie od ServerEngine (np 100 na sekunde)
     }
 
     public void move(byte id, int add2Row, int add2Column){
@@ -161,7 +165,7 @@ public class ServerEngine implements BombObserver {
         }
     }
 
-    //te metody wywola serwer
+    //te metody wywola ClientHandler poprzez KeyboardObserver
     public void moveUp(byte id){
         move(id, -1, 0);
     }
@@ -199,6 +203,9 @@ public class ServerEngine implements BombObserver {
             this.board.getTable()[players[id].getRow()][players[id].getColumn()] = newBomb;
 
             //frame.screenReload();
+            //taka metoda jest niepotrzebna, bo kazdy watek do oblsugi poszczegolnych klientow
+            //ma referencje do obiektu board utworzonego w klsie ServerEngine,
+            //wiec bedzie ja rozsylac cyklicznie niezaleznie od ServerEngine (np 100 na sekunde)
         }
     }
 

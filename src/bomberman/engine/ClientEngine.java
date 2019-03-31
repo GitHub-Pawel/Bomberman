@@ -8,7 +8,7 @@ import bomberman.observers.*;
 
 import java.awt.event.KeyEvent;
 
-public class ClientEngine implements KeyboardObserver {
+public class ClientEngine implements KeyboardObserver, BoardObserver {
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
@@ -16,6 +16,7 @@ public class ClientEngine implements KeyboardObserver {
     private BombermanGUI frame;
     private Board board;
     private Client client;
+    private Thread clientThread;
 
 
     /********************************************************************
@@ -27,6 +28,9 @@ public class ClientEngine implements KeyboardObserver {
         this.client = new Client(serverAddress, port);
         this.client.startConnection();
         this.board = this.client.receiveBoard();
+        this.client.subscribe(this);
+        this.clientThread = new Thread(client);
+        this.clientThread.start();
         //this.board = //pobranie tablicy z serwera//
         //this.clientId = //pobranie id przydzielonego przez serwer (0-3)//
         this.frame = new BombermanGUI(board);
@@ -39,12 +43,10 @@ public class ClientEngine implements KeyboardObserver {
     /********************************************************************
      *                            Methods                               *
      ********************************************************************/
+    //zwraca id klienta zeby serwer mogl odroznic
+    //Client nie musi znac swojego id, zeby sterowac swoja postacia
     @Override
-    public void moveUp(byte id) {
-        //wyslij wiadomosc moveUp na serwer
-        //zwraca id klienta zeby serwer mogl odroznic
-        this.client.sendKeyEvent(KeyEvent.VK_UP);
-    }
+    public void moveUp(byte id) { this.client.sendKeyEvent(KeyEvent.VK_UP); }
     @Override
     public void moveDown(byte id) {
         this.client.sendKeyEvent(KeyEvent.VK_DOWN);
@@ -60,5 +62,10 @@ public class ClientEngine implements KeyboardObserver {
     @Override
     public void plantBomb(byte id) {
         this.client.sendKeyEvent(KeyEvent.VK_SPACE);
+    }
+
+    @Override
+    public void boardUpdate(Board board) {
+        this.board = board;
     }
 }

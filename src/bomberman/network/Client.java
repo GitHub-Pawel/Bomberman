@@ -1,17 +1,21 @@
 package bomberman.network;
 
 import bomberman.component.Board;
+import bomberman.observers.BoardObserver;
+import bomberman.observers.KeyboardObserver;
+
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.net.Socket;
 
-public class Client {
+public class Client implements Runnable{
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
     private Socket clientSocket;
     private String ip;
     private int port;
+    private BoardObserver boardObserver;
 
 
     /********************************************************************
@@ -70,6 +74,27 @@ public class Client {
         clientSocket.close();
     }
 
+
+    public void subscribe(BoardObserver o){
+        this.boardObserver = o;
+    }
+
+    public void unsubscribe(KeyboardObserver o){
+        if (this.boardObserver == o){
+            this.boardObserver = null;
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true){
+            this.boardObserver.boardUpdate(this.receiveBoard());
+        }
+    }
+}
+
+
+/*
     public static void main(String[] args) throws IOException {
         Client client = new Client();
         client.startConnection();
@@ -78,4 +103,4 @@ public class Client {
         System.out.println(board.getTableLength());
         client.stopConnection();
     }
-}
+*/
