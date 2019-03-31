@@ -30,15 +30,15 @@ public class Client {
     /********************************************************************
      *                            Methods                               *
      ********************************************************************/
-    public void startConnection(String ip, int port) {
+    public void startConnection() {
         try {
-            this.clientSocket = new Socket(ip, port);
+            this.clientSocket = new Socket(this.ip, this.port);
         } catch (Exception e) {
             try {
                 Thread.sleep(1000, 33);       //try connect 30 times per second
             } catch (InterruptedException e1) {
             }
-            startConnection(ip, port);
+            startConnection();
         }
     }
 
@@ -72,7 +72,7 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
         Client client = new Client();
-        client.startConnection("localhost", 65432);
+        client.startConnection();
         client.sendKeyEvent(KeyEvent.VK_RIGHT);
         Board board = client.receiveBoard();
         System.out.println(board.getTableLength());

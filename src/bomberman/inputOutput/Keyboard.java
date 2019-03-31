@@ -12,7 +12,7 @@ public class Keyboard extends JFrame implements KeyListener {
     private boolean[] keys = new boolean[KeyEvent.VK_X + 1];    // KeyEvent.VK_X has the highest value from all of keys
     private KeyboardObserver keyboardObserver;
     private Keyboard keyboardID;
-    private byte secondId = 1;          // In singleplayer mode it becomes 0 and allows player1 to using keys assigned to player2 as well
+    private byte secondId;          // In singleplayer mode it becomes 0 and allows player1 to using keys assigned to player2 as well
 
 
     /********************************************************************
@@ -20,7 +20,8 @@ public class Keyboard extends JFrame implements KeyListener {
      ********************************************************************/
 
     public Keyboard(){
-        keyboardID = this;
+        this.keyboardID = this;
+        this.secondId = (byte) 1;
     }
 
     /********************************************************************
@@ -33,7 +34,7 @@ public class Keyboard extends JFrame implements KeyListener {
                 er.getKeyCode() == KeyEvent.VK_LEFT || er.getKeyCode() == KeyEvent.VK_A ||
                 er.getKeyCode() == KeyEvent.VK_RIGHT || er.getKeyCode() == KeyEvent.VK_D ||
                 er.getKeyCode() == KeyEvent.VK_ENTER || er.getKeyCode() == KeyEvent.VK_SPACE))
-                    throw new WrongKeyException();
+            throw new WrongKeyException();
     }
 
 
@@ -77,43 +78,33 @@ public class Keyboard extends JFrame implements KeyListener {
         switch (key){
             case KeyEvent.VK_W:
                 keyboardObserver.moveUp((byte) 0);
-                keyboardObserver.moveUp();
                 break;
             case KeyEvent.VK_S:
                 keyboardObserver.moveDown((byte) 0);
-                keyboardObserver.moveDown();
                 break;
             case KeyEvent.VK_A:
                 keyboardObserver.moveLeft((byte) 0);
-                keyboardObserver.moveLeft();
                 break;
             case KeyEvent.VK_D:
                 keyboardObserver.moveRight((byte) 0);
-                keyboardObserver.moveRight();
                 break;
             case KeyEvent.VK_SPACE:
                 keyboardObserver.plantBomb((byte) 0);
-                keyboardObserver.plantBomb();
                 break;
             case KeyEvent.VK_UP:
                 keyboardObserver.moveUp(secondId);
-                keyboardObserver.moveUp();
                 break;
             case KeyEvent.VK_DOWN:
                 keyboardObserver.moveDown(secondId);
-                keyboardObserver.moveDown();
                 break;
             case KeyEvent.VK_LEFT:
                 keyboardObserver.moveLeft(secondId);
-                keyboardObserver.moveLeft();
                 break;
             case KeyEvent.VK_RIGHT:
                 keyboardObserver.moveRight(secondId);
-                keyboardObserver.moveRight();
                 break;
             case KeyEvent.VK_ENTER:
                 keyboardObserver.plantBomb(secondId);
-                keyboardObserver.plantBomb();
                 break;
         }
     }

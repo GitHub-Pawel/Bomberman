@@ -192,7 +192,7 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
                 changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);               // Player moves into bonus
                 Sound.play("sounds\\bonus.wav");
             } else if (this.board.getTable()[y_changed][x_changed] instanceof Fire) {
-                    players[id].setStillAlive(false);                                               // Killing player when moves into fire
+                players[id].setStillAlive(false);                                               // Killing player when moves into fire
                 changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);
                 checkPlayerWin();
                 checkDefeat();
@@ -228,20 +228,6 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
     public void moveRight(byte id){
         move(id, 0 ,1);
     }
-
-    @Override
-    public void moveUp() {
-
-    }
-
-    @Override
-    public void moveDown() {}
-    @Override
-    public void moveLeft() {}
-    @Override
-    public void moveRight() {}
-    @Override
-    public void plantBomb() {}
 
     /********************************************************************
      *                  Plant The Bomb                                  *

@@ -25,6 +25,9 @@ metody moveUp/Down/Right/Left i plantBomb -> musza byc wywolywane z serwera po o
 */
 
 public class ServerEngine implements BombObserver {
+    /********************************************************************
+     *                         Properties                               *
+     ********************************************************************/
     private Server server;
     private Board board;
     private int numberOfPlayers;
@@ -38,7 +41,7 @@ public class ServerEngine implements BombObserver {
      ********************************************************************/
 
     public ServerEngine(int port, int numberOfPlayers, int fieldSize) throws IOException {
-        this.server = new Server(port);
+        this.server = new Server(port, numberOfPlayers);
         this.board = new Board(fieldSize);
         this.numberOfPlayers = numberOfPlayers;
         this.players = new Player[this.numberOfPlayers];
