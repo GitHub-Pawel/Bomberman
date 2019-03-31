@@ -11,7 +11,6 @@ import bomberman.entitie.basic.Wall;
 import bomberman.entitie.box.Bonus;
 import bomberman.entitie.box.Case;
 import bomberman.inputOutput.Sound;
-import bomberman.observers.BoardObserver;
 import bomberman.observers.BombObserver;
 import bomberman.observers.KeyboardObserver;
 
@@ -79,6 +78,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         raffleBonus();
 
         this.server = new Server(port, numberOfPlayers, this.board, this);
+        this.server.broadcastBoardUpdate();
     }
 
     /********************************************************************
@@ -135,10 +135,8 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             } catch (NullPointerException e) {
             }
         }
+        this.server.broadcastBoardUpdate();
         //frame.screenReload(); zamiast tego wyslij tablice do klientow - nie
-        //taka metoda jest niepotrzebna, bo kazdy watek do oblsugi poszczegolnych klientow
-        //ma referencje do obiektu board utworzonego w klsie ServerEngine,
-        //wiec bedzie ja rozsylac cyklicznie niezaleznie od ServerEngine (np 100 na sekunde)
     }
 
     public void move(byte id, int add2Row, int add2Column){

@@ -11,6 +11,7 @@ public class Server {
      *                         Properties                               *
      ********************************************************************/
     private ServerSocket serverSocket;
+    private ClientHandler [] clientHandlers;
     private Thread [] threadsOfClients;
     private int numberOfClients;
     private int port;
@@ -51,11 +52,13 @@ public class Server {
     }
 
     public void connect() throws IOException {
+        this.clientHandlers = new ClientHandler[this.numberOfClients];
         this.threadsOfClients = new Thread[this.numberOfClients];   //Each client is handled by another thread
         System.out.println("Waiting for clients ...");
 
         for (int i = 0; i<this.numberOfClients; ++i){
-            this.threadsOfClients[i] = new Thread(new ClientHandler(this.serverSocket.accept(), i, this.refToBoard, this.refToEngine));
+            this.clientHandlers[i] = new ClientHandler(this.serverSocket.accept(), i, this.refToBoard, this.refToEngine);
+            this.threadsOfClients[i] = new Thread(this.clientHandlers[i]);
             System.out.println("Connected Client NO.:" + i);
         }
 
@@ -76,9 +79,16 @@ public class Server {
         }
     }
 
+    public void broadcastBoardUpdate(){
+        for (int i = 0; i<this.numberOfClients; ++i){
+            this.clientHandlers[i].sendBoard();
+        }
+    }
+}
 
-    public static void main(String[] args) throws IOException {     //TO DO: Why is throws exception needed?
+/*
+public static void main(String[] args) throws IOException {     //TO DO: Why is throws exception needed?
         Server server = new Server(65432);
         //server.stop();
     }
-}
+ */

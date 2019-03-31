@@ -49,10 +49,10 @@ class ClientHandler implements Runnable{
         return keyEvent;
     }
 
-    public void sendBoard(Board board){
+    public void sendBoard(){
         try{
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-            objectOutputStream.writeObject(board);
+            objectOutputStream.writeObject(this.refereceToBoard);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +114,6 @@ class ClientHandler implements Runnable{
             } catch (InterruptedException e1) {
             }
 
-            this.sendBoard(this.refereceToBoard);
             this.update(this.receiveKeyEvent());
         }
 
