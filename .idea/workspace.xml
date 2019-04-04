@@ -139,7 +139,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554041955799" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554042005847" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Bomberman — kopia (2)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -223,7 +223,7 @@
       <workItem from="1553354501252" duration="20747000" />
       <workItem from="1553948381011" duration="20883000" />
       <workItem from="1554029444393" duration="8182000" />
-      <workItem from="1554039768434" duration="2177000" />
+      <workItem from="1554039768434" duration="2402000" />
     </task>
     <task id="LOCAL-00001" summary="First try to implement simple client-servr. Added new Package &quot;network&quot;, which includes socket classes. Don't use/run new classes until the bugs dont't be fixed.">
       <created>1553379194151</created>
@@ -257,7 +257,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51989000" />
+    <option name="totallyTimeSpent" value="52214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -270,9 +270,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20671141" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -282,7 +281,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25354108" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25354108" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
