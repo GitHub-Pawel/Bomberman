@@ -1,8 +1,8 @@
 package bomberman.network;
 
 import bomberman.component.Board;
+import bomberman.component.BoardForward;
 import bomberman.engine.ServerEngine;
-import bomberman.entitie.Player;
 import bomberman.observers.KeyboardObserver;
 
 import java.awt.event.KeyEvent;
@@ -17,7 +17,8 @@ class ClientHandler implements Runnable{
      ********************************************************************/
     private final Socket client;
     private final int id;
-    private Board refereceToBoard;
+    //private Board refereceToBoard;
+    private BoardForward refToBoardForward; //
     private KeyboardObserver keyboardObserver;
 
 
@@ -25,10 +26,11 @@ class ClientHandler implements Runnable{
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
-    public ClientHandler(Socket socket, int id, Board board, ServerEngine serverEngineSubscribe){
+    public ClientHandler(Socket socket, int id, BoardForward boardForward, ServerEngine serverEngineSubscribe){    //
         this.client = socket;
         this.id = id;
-        this.refereceToBoard = board;
+        //this.refereceToBoard = board;
+        this.refToBoardForward = boardForward; //
         this.keyboardObserver = serverEngineSubscribe;
     }
 
@@ -52,7 +54,7 @@ class ClientHandler implements Runnable{
     public void sendBoard(){
         try{
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-            objectOutputStream.writeObject(this.refereceToBoard);
+            objectOutputStream.writeObject(this.refToBoardForward); //
         } catch (IOException e) {
             e.printStackTrace();
         }

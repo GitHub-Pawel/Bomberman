@@ -1,5 +1,6 @@
 package bomberman.engine;
 
+import bomberman.component.BoardForward;
 import bomberman.network.*;
 import bomberman.component.Block;
 import bomberman.component.Board;
@@ -20,9 +21,7 @@ import java.util.Random;
 
 /*
 TO DO
-frame.screenReload -> zastapic rozeslaniem tablicy przez serwer do klientow
 checkWin/checkDefeat/gameEnd -> zakonczenie gry
-metody moveUp/Down/Right/Left i plantBomb -> musza byc wywolywane z serwera po otrzymaniu wiadomosci
 */
 
 public class ServerEngine implements KeyboardObserver, BombObserver {
@@ -31,6 +30,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
      ********************************************************************/
     private Server server;
     private Board board;
+    private BoardForward boardForward;
     private int numberOfPlayers;
     private Player[] players;
     private volatile Thread[] bombThreads;
@@ -76,8 +76,8 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
 
         insertCases();
         raffleBonus();
-
-        this.server = new Server(port, numberOfPlayers, this.board, this);
+        this.boardForward = new BoardForward(this.board);
+        this.server = new Server(port, numberOfPlayers, this.boardForward, this); //
         this.server.broadcastBoardUpdate();
     }
 
@@ -120,23 +120,27 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
 
     public void changePlayerPosition (byte id, int y_startup, int x_startup, int y_changed, int x_changed) {
         this.board.getTable()[y_changed][x_changed] = players[id];
+        this.boardForward.setBoardForwardField(y_changed, x_changed, this.board.getTable()[y_changed][x_changed]);
         players[id].setRow(y_changed);
         players[id].setColumn(x_changed);
 
         if (this.board.getTable()[y_startup][x_startup] instanceof Player) {
             this.board.getTable()[y_startup][x_startup] = board.getFloor();
+            this.boardForward.setBoardForwardField(y_startup, x_startup, this.board.getTable()[y_startup][x_startup]);
                     /* If firstly player drops bomb and next preses something else
                     then we mustn't change this Bomb into the Floor */
         } else {
             try {
                 if (y_changed != players[id].lastoneBomb.getRow() || x_changed != players[id].lastoneBomb.getColumn()) {
                     players[id].lastoneBomb.setImage(new ImageIcon("images\\bomb.jpg"));                        // Player changes position after planting bomb
+                    this.boardForward.setBoardForwardField(players[id].lastoneBomb.getRow(), players[id].lastoneBomb.getColumn(), new ImageIcon("images\\bomb.jpg"));
                 }
             } catch (NullPointerException e) {
             }
         }
+
+
         this.server.broadcastBoardUpdate();
-        //frame.screenReload(); zamiast tego wyslij tablice do klientow - nie
     }
 
     public void move(byte id, int add2Row, int add2Column){
@@ -167,7 +171,6 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         }
     }
 
-    //te metody wywola ClientHandler poprzez KeyboardObserver
     public void moveUp(byte id){
         move(id, -1, 0);
     }
@@ -203,7 +206,9 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             this.bombCount++;
 
             this.board.getTable()[players[id].getRow()][players[id].getColumn()] = newBomb;
+            this.boardForward.setBoardForwardField(players[id].getRow(), players[id].getColumn(), newBomb);
 
+            this.server.broadcastBoardUpdate();
             //frame.screenReload();
             //taka metoda jest niepotrzebna, bo kazdy watek do oblsugi poszczegolnych klientow
             //ma referencje do obiektu board utworzonego w klsie ServerEngine,
@@ -224,6 +229,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             }else{
                 this.board.getTable()[row][column] = new Fire();
             }
+            this.boardForward.setBoardForwardField(row, column, this.board.getTable()[row][column]);
         }
 
         for (int i=0; i < this.numberOfPlayers; ++i){
@@ -233,7 +239,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
                     //this.checkDefeat();
                     //this.checkPlayerWin();
                     this.board.getTable()[row][column].setImage(new ImageIcon("images\\burnedPlayer.jpg")); // When player had planted the bomb and did not escaped
-
+                    this.boardForward.setBoardForwardField(row, column, new ImageIcon("images\\burnedPlayer.jpg"));
                 }
             }
         }
@@ -274,7 +280,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             if(!(tmp instanceof Floor || tmp instanceof Bonus)) break;
         }
 
-        //frame.screenReload();
+        this.server.broadcastBoardUpdate();
     }
 
 
@@ -291,6 +297,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         }else if (this.board.getTable()[row][column] instanceof Player){
             this.board.getTable()[row][column] = this.board.getFloor();                // Killing the player
         }
+        this.boardForward.setBoardForwardField(row, column, this.board.getTable()[row][column]);
         //gameEnd();
     }
 
@@ -330,7 +337,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             if(!(tmp instanceof Fire || tmp instanceof Floor)) break;   // U P D A T E
         }
 
-        //frame.screenReload();
+        this.server.broadcastBoardUpdate();
     }
 
 

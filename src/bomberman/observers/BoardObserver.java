@@ -1,7 +1,8 @@
 package bomberman.observers;
 
-import bomberman.component.Board;
+//import bomberman.component.Board;
+import bomberman.component.BoardForward;
 
 public interface BoardObserver {
-    void boardUpdate(Board board);
+    void boardUpdate(BoardForward boardForward);   //
 }

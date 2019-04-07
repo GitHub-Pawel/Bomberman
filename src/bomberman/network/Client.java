@@ -1,6 +1,7 @@
 package bomberman.network;
 
 import bomberman.component.Board;
+import bomberman.component.BoardForward;
 import bomberman.observers.BoardObserver;
 import bomberman.observers.KeyboardObserver;
 
@@ -56,17 +57,17 @@ public class Client implements Runnable{
         }
     }
 
-    public Board receiveBoard(){
-        Board board = null;
+    public BoardForward receiveBoard(){     //
+        BoardForward boardForward = null;
         try{
             ObjectInputStream objectInputStream = new ObjectInputStream(this.clientSocket.getInputStream());
-            board = (Board) objectInputStream.readObject();
+            boardForward = (BoardForward) objectInputStream.readObject();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return board;
+        return boardForward;
     }
 
 

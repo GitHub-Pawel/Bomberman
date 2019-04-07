@@ -1,5 +1,7 @@
 package bomberman.engine;
 
+import bomberman.component.BoardForward;
+import bomberman.gui.ClientGUI;
 import bomberman.network.*;
 import bomberman.component.Board;
 import bomberman.gui.BombermanGUI;
@@ -13,8 +15,8 @@ public class ClientEngine implements KeyboardObserver, BoardObserver {
      *                         Properties                               *
      ********************************************************************/
     private Keyboard keyboard;
-    private BombermanGUI frame;
-    private Board board;
+    private ClientGUI frame;    //
+    private BoardForward boardForward; //
     private Client client;
     private Thread clientThread;
 
@@ -27,13 +29,11 @@ public class ClientEngine implements KeyboardObserver, BoardObserver {
         this.keyboard.setSecondId((byte) 0);
         this.client = new Client(serverAddress, port);
         this.client.startConnection();
-        this.board = this.client.receiveBoard();
+        this.boardForward = this.client.receiveBoard();
         this.client.subscribe(this);
         this.clientThread = new Thread(client);
         this.clientThread.start();
-        //this.board = //pobranie tablicy z serwera//
-        //this.clientId = //pobranie id przydzielonego przez serwer (0-3)//
-        this.frame = new BombermanGUI(board);
+        this.frame = new ClientGUI(boardForward);  //
         this.frame.addKeyListener(this.keyboard.getKeyboardID());
         this.keyboard.subscribe(this);
 
@@ -43,8 +43,6 @@ public class ClientEngine implements KeyboardObserver, BoardObserver {
     /********************************************************************
      *                            Methods                               *
      ********************************************************************/
-    //zwraca id klienta zeby serwer mogl odroznic
-    //Client nie musi znac swojego id, zeby sterowac swoja postacia
     @Override
     public void moveUp(byte id) { this.client.sendKeyEvent(KeyEvent.VK_UP); }
     @Override
@@ -65,8 +63,8 @@ public class ClientEngine implements KeyboardObserver, BoardObserver {
     }
 
     @Override
-    public void boardUpdate(Board board) {
-        this.board = board;
-        frame.screenReload(this.board);
+    public void boardUpdate(BoardForward boardForward) {
+        this.boardForward = boardForward;
+        frame.screenReload(this.boardForward);
     }
 }
