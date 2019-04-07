@@ -1,23 +1,29 @@
 package bomberman.component;
 
+import bomberman.entitie.basic.Floor;
+import bomberman.entitie.basic.Wall;
+
 import javax.swing.*;
 import java.io.Serializable;
 
 public class BoardForward implements Serializable {
 
-    private ImageIcon[][] boardForward;
+    private Block[][] table;
     private int tableLength;
 
 
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
+
     public BoardForward(Board board) {
         this.tableLength = board.getTableLength();
-        this.boardForward = new ImageIcon[tableLength][tableLength];
+        this.table = new Block[this.tableLength][this.tableLength];
+
         for (int row = 0; row < tableLength; ++row) {
             for (int column = 0; column < tableLength; ++column) {
-                this.boardForward[row][column] = board.getTable()[row][column].getImage();
+                this.table[row][column] = new Block(row, column);
+                this.table[row][column].setImage(board.getTable()[row][column].getImage());
             }
         }
     }
@@ -27,16 +33,14 @@ public class BoardForward implements Serializable {
      ********************************************************************/
 
     public void setBoardForwardField(int row, int column, Block block){
-        this.boardForward[row][column] = block.getImage();
+        this.table[row][column].setImage(block.getImage());
     }
 
     public void setBoardForwardField(int row, int column, ImageIcon image){
-        this.boardForward[row][column] = image;
+        this.table[row][column].setImage(image);
     }
 
-    public ImageIcon[][] getTable() {
-        return boardForward;
-    }
+    public Block[][] getTable() { return table; }
 
     public int getTableLength() {
         return tableLength;

@@ -74,8 +74,8 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             board.getTable()[this.board.getTableLength()-2][this.board.getTableLength()-2] = players[3];
         }
 
-        insertCases();
-        raffleBonus();
+        this.insertCases();
+        this.raffleBonus();
         this.boardForward = new BoardForward(this.board);
         this.server = new Server(port, numberOfPlayers, this.boardForward, this); //
         this.server.broadcastBoardUpdate();

@@ -3,7 +3,7 @@ package bomberman.component;
 import javax.swing.*;
 import java.io.Serializable;
 
-public abstract class Block implements Serializable{
+public class Block implements Serializable{
 
     private int column;         // x
     private int row;            // y

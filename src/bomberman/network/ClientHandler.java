@@ -51,7 +51,7 @@ class ClientHandler implements Runnable{
         return keyEvent;
     }
 
-    public void sendBoard(){
+    public void sendBoardForward(){
         try{
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
             objectOutputStream.writeObject(this.refToBoardForward); //
@@ -136,7 +136,7 @@ class ClientHandler implements Runnable{
     public void run() {
         System.out.println(this.receiveKeyEvent());
         Board board = new Board(17);
-        this.sendBoard(board);
+        this.sendBoardForward(board);
         try {
             this.stopHandler();
         } catch (IOException e) {

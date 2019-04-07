@@ -3,14 +3,13 @@ package bomberman.engine;
 import bomberman.component.BoardForward;
 import bomberman.gui.ClientGUI;
 import bomberman.network.*;
-import bomberman.component.Board;
-import bomberman.gui.BombermanGUI;
 import bomberman.inputOutput.Keyboard;
 import bomberman.observers.*;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
-public class ClientEngine implements KeyboardObserver, BoardObserver {
+public class ClientEngine implements KeyboardObserver, BoardForwardObserver {
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
@@ -24,7 +23,7 @@ public class ClientEngine implements KeyboardObserver, BoardObserver {
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
-    public ClientEngine(String serverAddress, int port){
+    public ClientEngine(String serverAddress, int port) throws IOException {
         this.keyboard = new Keyboard();
         this.keyboard.setSecondId((byte) 0);
         this.client = new Client(serverAddress, port);

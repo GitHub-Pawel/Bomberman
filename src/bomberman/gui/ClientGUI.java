@@ -30,7 +30,7 @@ public class ClientGUI extends JFrame {
             for (int j = 0; j < this.boardForward.getTableLength(); j++) {
                 field[i][j] = new JLabel();
                 try {
-                    field[i][j].setIcon(this.boardForward.getTable()[i][j]);
+                    field[i][j].setIcon(this.boardForward.getTable()[i][j].getImage());
                 } catch (NullPointerException e){
                 }
                 rootPanel.add(field[i][j]);
@@ -58,7 +58,7 @@ public class ClientGUI extends JFrame {
         for (int i = 0; i < boardForward.getTableLength(); i++) {
             for (int j = 0; j < boardForward.getTableLength(); j++) {
                 try {
-                    field[i][j].setIcon(boardForward.getTable()[i][j]);
+                    field[i][j].setIcon(boardForward.getTable()[i][j].getImage());
                 } catch (NullPointerException e){
                 }
             }

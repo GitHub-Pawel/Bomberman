@@ -1,6 +1,5 @@
 package bomberman.network;
 
-import bomberman.component.Board;
 import bomberman.component.BoardForward;
 import bomberman.engine.ServerEngine;
 
@@ -84,7 +83,7 @@ public class Server {
 
     public void broadcastBoardUpdate(){
         for (int i = 0; i<this.numberOfClients; ++i){
-            this.clientHandlers[i].sendBoard();
+            this.clientHandlers[i].sendBoardForward();
         }
     }
 }
