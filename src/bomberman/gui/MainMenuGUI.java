@@ -170,6 +170,18 @@ public class MainMenuGUI extends JFrame {
                 repaint();
             }
         });
+        createServerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ServerConstructor serverConstructor = new ServerConstructor();
+            }
+        });
+        joinServerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientConstructor clientConstructor = new ClientConstructor();
+            }
+        });
         guideButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
