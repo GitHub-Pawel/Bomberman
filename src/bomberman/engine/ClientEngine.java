@@ -64,6 +64,14 @@ public class ClientEngine implements KeyboardObserver, BoardForwardObserver {
     @Override
     public void boardUpdate(BoardForward boardForward) {
         this.boardForward = boardForward;
-        frame.screenReload(this.boardForward);
+        try {
+            frame.screenReload(this.boardForward);
+        }catch (NullPointerException e){
+            try {
+                this.client.stopConnection();
+            } catch (IOException e2) {
+                e.printStackTrace();
+            }
+        }
     }
 }

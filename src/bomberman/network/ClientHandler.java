@@ -3,6 +3,7 @@ package bomberman.network;
 import bomberman.component.Board;
 import bomberman.component.BoardForward;
 import bomberman.engine.ServerEngine;
+import bomberman.observers.ClientDisconnectedObserver;
 import bomberman.observers.KeyboardObserver;
 
 import java.awt.event.KeyEvent;
@@ -15,15 +16,15 @@ class ClientHandler implements Runnable{
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
-    //private final Socket client;
     private final Socket clientRx;
     private final Socket clientTx;
     private final int id;
-    //private Board refereceToBoard;
     private BoardForward refToBoardForward; //
     private KeyboardObserver keyboardObserver;
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
+    private ClientDisconnectedObserver clientDisconnectedObserver;
+    private boolean continueThread;
 
     /********************************************************************
      *                         Constructor                              *
@@ -32,7 +33,7 @@ class ClientHandler implements Runnable{
         this.clientRx = socketRx;
         this.clientTx = socketTx;
         this.id = id;
-        //this.refereceToBoard = board;
+        this.continueThread = true;
         this.refToBoardForward = boardForward; //
         this.keyboardObserver = serverEngineSubscribe;
 
@@ -53,7 +54,8 @@ class ClientHandler implements Runnable{
         try{
             keyEvent = (int) this.objectInputStream.readObject();
         } catch (IOException e) {
-            e.printStackTrace();
+
+            this.clientDisconnectedObserver.exitConnection();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -70,7 +72,7 @@ class ClientHandler implements Runnable{
     }
 
     public void stopHandler() throws IOException {
-        //this.client.close();
+        this.continueThread = false;
         this.clientRx.close();
         this.clientTx.close();
     }
@@ -115,43 +117,34 @@ class ClientHandler implements Runnable{
     }
 
     /********************************************************************
+     *                Client Disconnected Observer                      *
+     ********************************************************************/
+
+
+    public void subscribe(ClientDisconnectedObserver o){
+        clientDisconnectedObserver = o;
+    }
+
+    public void unsubscribe(ClientDisconnectedObserver o){
+        if (clientDisconnectedObserver == o){
+            clientDisconnectedObserver = null;
+        }
+    }
+
+    /********************************************************************
      *                       Runnable method                            *
      ********************************************************************/
 
 
     @Override
     public void run() {
-        while (true){
-            try {
-                Thread.sleep(0);               //refresh 100 times per second
-            } catch (InterruptedException e1) {
-            }
+        while (this.continueThread){
+//            try {
+//                Thread.sleep(0);               //refresh 100 times per second
+//            } catch (InterruptedException e1) {
+//            }
 
             this.update(this.receiveKeyEvent());
         }
-
-        //TO DO: Create disconnection system
-        /*
-        try {
-            this.stopHandler();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
     }
 }
-
-
-/*
-    @Override
-    public void run() {
-        System.out.println(this.receiveKeyEvent());
-        Board board = new Board(17);
-        this.sendBoardForward(board);
-        try {
-            this.stopHandler();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/

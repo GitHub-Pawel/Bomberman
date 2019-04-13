@@ -11,16 +11,15 @@ public class Client implements Runnable{
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
-    //private Socket clientSocket;
     private Socket clientSocketTx;      // Transmit socket
     private Socket clientSocketRx;      // Receive socket
     private String ip;
-    //private int port;
     private int portTx;
     private int portRx;
     private BoardForwardObserver boardForwardObserver;
     ObjectOutputStream objectOutputStream;
     ObjectInputStream objectInputStream;
+    private boolean continueConnection;
 
     /********************************************************************
      *                         Constructor                              *
@@ -31,9 +30,9 @@ public class Client implements Runnable{
 
     public Client(String ip, int portTx, int portRx){
         this.ip = ip;
-        //this.port = port;
         this.portTx = portTx;
         this.portRx = portRx;
+        this.continueConnection = true;
     }
 
 
@@ -64,7 +63,7 @@ public class Client implements Runnable{
 
     public void sendKeyEvent(int keyEvent){
         try {
-            this.objectOutputStream.reset();    //??????????????
+            this.objectOutputStream.reset();
             this.objectOutputStream.writeObject(keyEvent);
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,7 +75,12 @@ public class Client implements Runnable{
         try{
             boardForward = (BoardForward) this.objectInputStream.readObject();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            try {
+                this.stopConnection();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -85,7 +89,7 @@ public class Client implements Runnable{
 
 
     public void stopConnection() throws IOException {
-        //clientSocket.close();
+        this.continueConnection = false;
         clientSocketTx.close();
         clientSocketRx.close();
     }
@@ -103,20 +107,8 @@ public class Client implements Runnable{
 
     @Override
     public void run() {
-        while (true){
+        while (this.continueConnection){
             this.boardForwardObserver.boardUpdate(this.receiveBoard());
         }
     }
 }
-
-
-/*
-    public static void main(String[] args) throws IOException {
-        Client client = new Client();
-        client.startConnection();
-        client.sendKeyEvent(KeyEvent.VK_RIGHT);
-        Board board = client.receiveBoard();
-        System.out.println(board.getTableLength());
-        client.stopConnection();
-    }
-*/

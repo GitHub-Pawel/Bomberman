@@ -54,7 +54,7 @@ public class ClientGUI extends JFrame {
         this.screenReload(this.boardForward);      // Refreshing the game field in depend of board state
     }
 
-    public void screenReload(BoardForward boardForward){         // Refreshing the game field in depend of board state
+    public void screenReload(BoardForward boardForward) throws NullPointerException{         // Refreshing the game field in depend of board state
         for (int i = 0; i < boardForward.getTableLength(); i++) {
             for (int j = 0; j < boardForward.getTableLength(); j++) {
                 try {
