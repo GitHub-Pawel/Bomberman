@@ -15,23 +15,33 @@ class ClientHandler implements Runnable{
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
-    private final Socket client;
+    //private final Socket client;
+    private final Socket clientRx;
+    private final Socket clientTx;
     private final int id;
     //private Board refereceToBoard;
     private BoardForward refToBoardForward; //
     private KeyboardObserver keyboardObserver;
-
-
+    private ObjectInputStream objectInputStream;
+    private ObjectOutputStream objectOutputStream;
 
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
-    public ClientHandler(Socket socket, int id, BoardForward boardForward, ServerEngine serverEngineSubscribe){    //
-        this.client = socket;
+    public ClientHandler(Socket socketRx, Socket socketTx, int id, BoardForward boardForward, ServerEngine serverEngineSubscribe){    //
+        this.clientRx = socketRx;
+        this.clientTx = socketTx;
         this.id = id;
         //this.refereceToBoard = board;
         this.refToBoardForward = boardForward; //
         this.keyboardObserver = serverEngineSubscribe;
+
+        try {
+            this.objectInputStream = new ObjectInputStream(this.clientRx.getInputStream());
+            this.objectOutputStream = new ObjectOutputStream(this.clientTx.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -41,8 +51,7 @@ class ClientHandler implements Runnable{
     public int receiveKeyEvent(){
         int keyEvent = -1;
         try{
-            ObjectInputStream objectInputStream = new ObjectInputStream(this.client.getInputStream());
-            keyEvent = (int) objectInputStream.readObject();
+            keyEvent = (int) this.objectInputStream.readObject();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -53,15 +62,17 @@ class ClientHandler implements Runnable{
 
     public void sendBoardForward(){
         try{
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-            objectOutputStream.writeObject(this.refToBoardForward); //
+            this.objectOutputStream.reset();
+            this.objectOutputStream.writeObject(this.refToBoardForward); //
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
     public void stopHandler() throws IOException {
-        this.client.close();
+        //this.client.close();
+        this.clientRx.close();
+        this.clientTx.close();
     }
 
     /********************************************************************
@@ -112,7 +123,7 @@ class ClientHandler implements Runnable{
     public void run() {
         while (true){
             try {
-                Thread.sleep(10);               //refresh 100 times per second
+                Thread.sleep(0);               //refresh 100 times per second
             } catch (InterruptedException e1) {
             }
 

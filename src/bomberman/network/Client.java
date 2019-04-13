@@ -11,22 +11,29 @@ public class Client implements Runnable{
     /********************************************************************
      *                         Properties                               *
      ********************************************************************/
-    private Socket clientSocket;
+    //private Socket clientSocket;
+    private Socket clientSocketTx;      // Transmit socket
+    private Socket clientSocketRx;      // Receive socket
     private String ip;
-    private int port;
+    //private int port;
+    private int portTx;
+    private int portRx;
     private BoardForwardObserver boardForwardObserver;
-
+    ObjectOutputStream objectOutputStream;
+    ObjectInputStream objectInputStream;
 
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
     public Client(){
-        this("localhost", 65432);
+        this("localhost", 65432, 65433);
     }
 
-    public Client(String ip, int port){
+    public Client(String ip, int portTx, int portRx){
         this.ip = ip;
-        this.port = port;
+        //this.port = port;
+        this.portTx = portTx;
+        this.portRx = portRx;
     }
 
 
@@ -35,7 +42,8 @@ public class Client implements Runnable{
      ********************************************************************/
     public void startConnection(){
         try {
-            this.clientSocket = new Socket(this.ip, this.port);
+            this.clientSocketTx = new Socket(this.ip, this.portTx);
+            this.clientSocketRx = new Socket(this.ip, this.portRx);
         } catch (Exception e) {
             try {
                 Thread.sleep(1000, 33);       //try connect 30 times per second
@@ -43,13 +51,21 @@ public class Client implements Runnable{
             }
             startConnection();
         }
+
+        try {
+            this.objectOutputStream = new ObjectOutputStream(this.clientSocketTx.getOutputStream());
+            this.objectInputStream = new ObjectInputStream(this.clientSocketRx.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
     public void sendKeyEvent(int keyEvent){
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            objectOutputStream.writeObject(keyEvent);
+            this.objectOutputStream.reset();    //??????????????
+            this.objectOutputStream.writeObject(keyEvent);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,8 +74,7 @@ public class Client implements Runnable{
     public BoardForward receiveBoard(){     //
         BoardForward boardForward = null;
         try{
-            ObjectInputStream objectInputStream = new ObjectInputStream(this.clientSocket.getInputStream());
-            boardForward = (BoardForward) objectInputStream.readObject();
+            boardForward = (BoardForward) this.objectInputStream.readObject();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -70,7 +85,9 @@ public class Client implements Runnable{
 
 
     public void stopConnection() throws IOException {
-        clientSocket.close();
+        //clientSocket.close();
+        clientSocketTx.close();
+        clientSocketRx.close();
     }
 
 

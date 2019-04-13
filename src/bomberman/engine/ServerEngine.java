@@ -41,7 +41,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
      *                         Constructor                              *
      ********************************************************************/
 
-    public ServerEngine(int port, int numberOfPlayers, int fieldSize) throws IOException {
+    public ServerEngine(int portRx, int portTx, int numberOfPlayers, int fieldSize) throws IOException {
         this.board = new Board(fieldSize);
         this.numberOfPlayers = numberOfPlayers;
         this.players = new Player[this.numberOfPlayers];
@@ -77,7 +77,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         this.insertCases();
         this.raffleBonus();
         this.boardForward = new BoardForward(this.board);
-        this.server = new Server(port, numberOfPlayers, this.boardForward, this); //
+        this.server = new Server(portRx, portTx, numberOfPlayers, this.boardForward, this); //
         this.server.broadcastBoardUpdate();
     }
 

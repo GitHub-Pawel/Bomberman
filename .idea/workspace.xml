@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="557a7371-205b-4e02-b1b9-a5d683c1d062" name="Default Changelist" comment="Simple connection client-server finally working properly.">
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Bomberman/bomberman/gui/MainMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Bomberman/META-INF/Bomberman.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/MainClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/MainClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/MainServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,97 +22,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/MainServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/network/Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="45" column="104" selection-start-line="45" selection-start-column="104" selection-end-line="45" selection-end-column="104" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/MainClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bomberman/network/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2992">
-              <caret line="181" column="78" selection-start-line="181" selection-start-column="78" selection-end-line="181" selection-end-column="78" />
+            <state relative-caret-position="254">
+              <caret line="66" column="64" lean-forward="true" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+              <folding>
+                <element signature="e#3342#3343#0" expanded="true" />
+                <element signature="e#3387#3388#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ServerConstructor.java">
+        <entry file="file://$PROJECT_DIR$/src/bomberman/network/ClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="165" selection-start-line="165" selection-end-line="165" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="203">
+              <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ServerConstructor.form">
-          <provider selected="true" editor-type-id="ui-designer" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ClientConstructor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ClientConstructor.form">
-          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
     </leaf>
@@ -160,18 +85,11 @@
         <option value="$PROJECT_DIR$/src/bomberman/engine/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/BombermanGUI.java" />
         <option value="$PROJECT_DIR$/src/bomberman/Main.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/network/Server.java" />
         <option value="$PROJECT_DIR$/src/bomberman/observers/BoardObserver.java" />
         <option value="$PROJECT_DIR$/src/bomberman/observers/BoardForwardObserver.java" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/ClientGUI.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" />
         <option value="$PROJECT_DIR$/src/bomberman/component/Block.java" />
         <option value="$PROJECT_DIR$/src/bomberman/component/BoardForward.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/MainClient.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/MainServer.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/network/Client.java" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/serverConstructor.form" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/serverConstructor.java" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/ServerConstructor.form" />
@@ -179,14 +97,21 @@
         <option value="$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/ClientConstructor.java" />
         <option value="$PROJECT_DIR$/src/bomberman/gui/ServerConstructor.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/network/Server.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/MainServer.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/MainClient.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/network/Client.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1374" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -196,7 +121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -220,36 +144,6 @@
               <item name="Bomberman" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="ClientConstructor" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="ServerConstructor" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bomberman" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bomberman" type="462c0819:PsiDirectoryNode" />
               <item name="network" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -257,12 +151,14 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555013797740" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555161860825" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Bomberman_2" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -279,7 +175,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MainServer">
     <configuration name="ClientConstructor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bomberman.gui.ClientConstructor" />
       <module name="Bomberman" />
@@ -354,10 +250,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainServer" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ClientConstructor" />
         <item itemvalue="Application.ServerConstructor" />
-        <item itemvalue="Application.MainServer" />
         <item itemvalue="Application.MainClient" />
       </list>
     </recent_temporary>
@@ -377,6 +273,7 @@
       <workItem from="1554029444393" duration="8182000" />
       <workItem from="1554039768434" duration="2402000" />
       <workItem from="1554643015934" duration="4349000" />
+      <workItem from="1555155943773" duration="5896000" />
     </task>
     <task id="LOCAL-00001" summary="First try to implement simple client-servr. Added new Package &quot;network&quot;, which includes socket classes. Don't use/run new classes until the bugs dont't be fixed.">
       <created>1553379194151</created>
@@ -410,7 +307,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56563000" />
+    <option name="totallyTimeSpent" value="62459000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -422,10 +319,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1374" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31240544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1442953" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -435,7 +332,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32683983" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35429448" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28328612" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -443,7 +340,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32575756" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3243626" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -629,27 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/network/ClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/gui/BombermanGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -657,63 +533,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/MainServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/network/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="45" column="104" selection-start-line="45" selection-start-column="104" selection-end-line="45" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/MainClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/network/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2992">
-          <caret line="181" column="78" selection-start-line="181" selection-start-column="78" selection-end-line="181" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ServerConstructor.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ClientConstructor.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ClientConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
+        <state relative-caret-position="799">
           <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -723,11 +548,108 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ServerConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
+        <state relative-caret-position="522">
           <caret line="165" selection-start-line="165" selection-end-line="165" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="181" column="78" selection-start-line="181" selection-start-column="78" selection-end-line="181" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/gui/ClientConstructor.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3879">
+          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="62" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/MainClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="78" selection-start-line="8" selection-start-column="78" selection-end-line="8" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/MainServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/net/SocketInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="139" selection-start-line="139" selection-end-line="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/io/InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="720" column="29" selection-start-line="720" selection-start-column="29" selection-end-line="720" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/io/ObjectOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="496" column="16" selection-start-line="496" selection-start-column="16" selection-end-line="496" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/network/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-372">
+          <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/network/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="66" column="64" lean-forward="true" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+          <folding>
+            <element signature="e#3342#3343#0" expanded="true" />
+            <element signature="e#3387#3388#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/network/ClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
         </state>
       </provider>
     </entry>

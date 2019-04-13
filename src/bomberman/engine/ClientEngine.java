@@ -23,10 +23,10 @@ public class ClientEngine implements KeyboardObserver, BoardForwardObserver {
     /********************************************************************
      *                         Constructor                              *
      ********************************************************************/
-    public ClientEngine(String serverAddress, int port) throws IOException {
+    public ClientEngine(String serverAddress, int portTx, int portRx) throws IOException {
         this.keyboard = new Keyboard();
         this.keyboard.setSecondId((byte) 0);
-        this.client = new Client(serverAddress, port);
+        this.client = new Client(serverAddress, portTx, portRx);
         this.client.startConnection();
         this.boardForward = this.client.receiveBoard();
         this.client.subscribe(this);
