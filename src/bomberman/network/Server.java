@@ -92,7 +92,8 @@ public class Server implements ClientDisconnectedObserver {
     }
 
     public void stopThreads(int id){
-        this.threadsOfClients[id].interrupt();
+        this.clientHandlers[id].setContinueThread(false);
+        this.clientHandlers[id].unsubscribe(this);
     }
 
     public void broadcastBoardUpdate(){

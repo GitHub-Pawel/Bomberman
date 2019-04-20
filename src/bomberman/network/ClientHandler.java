@@ -141,12 +141,12 @@ class ClientHandler implements Runnable{
     @Override
     public void run() {
         while (this.continueThread){
-//            try {
-//                Thread.sleep(0);               //refresh 100 times per second
-//            } catch (InterruptedException e1) {
-//            }
 
             this.update(this.receiveKeyEvent());
         }
+    }
+
+    public void setContinueThread(boolean continueThread) {
+        this.continueThread = continueThread;
     }
 }

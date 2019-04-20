@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="557a7371-205b-4e02-b1b9-a5d683c1d062" name="Default Changelist" comment="Simple connection client-server finally working properly.">
-      <change beforePath="$PROJECT_DIR$/src/bomberman/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/MainServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bomberman/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bomberman/network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,17 +17,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
+            <state relative-caret-position="1547">
               <caret line="110" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="275" column="28" selection-start-line="275" selection-start-column="28" selection-end-line="275" selection-end-column="28" />
+            <state relative-caret-position="224">
+              <caret line="272" column="26" selection-start-line="272" selection-start-column="26" selection-end-line="272" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#18854#18855#0" expanded="true" />
@@ -68,20 +66,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bomberman/network/ClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+            <state relative-caret-position="767">
+              <caret line="148" column="59" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
+              <folding>
+                <element signature="e#5492#5493#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bomberman/network/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+            <state relative-caret-position="238">
+              <caret line="95" column="48" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
               <folding>
-                <element signature="e#3792#3793#0" expanded="true" />
-                <element signature="e#3845#3846#0" expanded="true" />
                 <element signature="e#4461#4462#0" expanded="true" />
                 <element signature="e#4502#4503#0" expanded="true" />
               </folding>
@@ -152,12 +151,12 @@
         <option value="$PROJECT_DIR$/src/bomberman/engine/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/bomberman/component/FlagForward.java" />
         <option value="$PROJECT_DIR$/src/bomberman/entitie/Player.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" />
-        <option value="$PROJECT_DIR$/src/bomberman/network/Server.java" />
         <option value="$PROJECT_DIR$/src/bomberman/network/Client.java" />
         <option value="$PROJECT_DIR$/src/bomberman/MainServer.java" />
         <option value="$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java" />
         <option value="$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/network/Server.java" />
       </list>
     </option>
   </component>
@@ -217,7 +216,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555803441787" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555803825240" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Bomberman_4" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -369,7 +368,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81882000" />
+    <option name="totallyTimeSpent" value="82158000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,26 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/network/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-          <folding>
-            <element signature="e#3792#3793#0" expanded="true" />
-            <element signature="e#3845#3846#0" expanded="true" />
-            <element signature="e#4461#4462#0" expanded="true" />
-            <element signature="e#4502#4503#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/network/ClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/MainServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -787,21 +766,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="110" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ServerEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="275" column="28" selection-start-line="275" selection-start-column="28" selection-end-line="275" selection-end-column="28" />
+        <state relative-caret-position="224">
+          <caret line="272" column="26" selection-start-line="272" selection-start-column="26" selection-end-line="272" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#18854#18855#0" expanded="true" />
             <element signature="e#18887#18888#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/engine/ClientEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="110" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/network/ClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="148" column="59" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
+          <folding>
+            <element signature="e#5492#5493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/network/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="95" column="48" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+          <folding>
+            <element signature="e#4461#4462#0" expanded="true" />
+            <element signature="e#4502#4503#0" expanded="true" />
           </folding>
         </state>
       </provider>
