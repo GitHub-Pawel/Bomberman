@@ -104,7 +104,7 @@ public class ClientEngine implements KeyboardObserver, BoardForwardObserver {
     }
 
     public void checkDefeat(){
-        if (this.boardForward.getFlagForward().getStillAlive(this.client.getId()) == false){
+        if (this.gameEndGUI == null && this.boardForward.getFlagForward().getStillAlive(this.client.getId()) == false){
             Sound.play("sounds\\gameover.wav");
             this.gameEndImage = new ImageIcon("menuImages\\youLoseLabel.jpg");
             this.gameEndGUI = new GameEndGUI(this.gameEndImage);
@@ -112,7 +112,7 @@ public class ClientEngine implements KeyboardObserver, BoardForwardObserver {
     }
 
     public void checkWinner(){
-        if (this.boardForward.getFlagForward().getWinner(this.client.getId())){
+        if (this.gameEndGUI == null && this.boardForward.getFlagForward().getWinner(this.client.getId())){
             Sound.play("sounds\\win.wav");
             this.gameEndImage = new ImageIcon("menuImages\\youWinLabel.jpg");
             this.gameEndGUI = new GameEndGUI(this.gameEndImage);

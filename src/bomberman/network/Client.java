@@ -45,19 +45,19 @@ public class Client implements Runnable{
             this.clientSocketTx = new Socket(this.ip, this.portTx);
             this.clientSocketRx = new Socket(this.ip, this.portRx);
         } catch (Exception e) {
-            try {
-                Thread.sleep(1000, 33);       //try connect 30 times per second
-            } catch (InterruptedException e1) {
+            if (this.clientSocketRx == null || this.clientSocketTx == null || this.clientSocketTx.isConnected() == false || this.clientSocketRx.isConnected() == false) {
+                startConnection();
             }
-            startConnection();
         }
 
         try {
             this.objectOutputStream = new ObjectOutputStream(this.clientSocketTx.getOutputStream());
             this.objectInputStream = new ObjectInputStream(this.clientSocketRx.getInputStream());
-
-
-            this.id = objectInputStream.readInt();
+            try {
+                this.id = objectInputStream.readInt();
+            } catch (EOFException e){
+                 this.stopConnection();
+            }
             System.out.print("My id is: ");
             System.out.println(this.id);
         } catch (IOException e) {
