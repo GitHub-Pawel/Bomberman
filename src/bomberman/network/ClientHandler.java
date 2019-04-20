@@ -40,6 +40,8 @@ class ClientHandler implements Runnable{
         try {
             this.objectInputStream = new ObjectInputStream(this.clientRx.getInputStream());
             this.objectOutputStream = new ObjectOutputStream(this.clientTx.getOutputStream());
+
+            this.objectOutputStream.writeInt(id);  //First message to client is his Id
         } catch (IOException e) {
             e.printStackTrace();
         }

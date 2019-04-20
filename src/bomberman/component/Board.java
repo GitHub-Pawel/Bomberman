@@ -11,7 +11,6 @@ public class Board implements Serializable{
     private final Floor floor;
     private final Wall wall;
 
-
     /********************************************************************
      *                         Constructor                              *
      * @param fieldSize                                                 *

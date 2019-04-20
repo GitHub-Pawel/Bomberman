@@ -10,6 +10,7 @@ public class BoardForward implements Serializable {
 
     private Block[][] table;
     private int tableLength;
+    private FlagForward flagForward;
 
 
     /********************************************************************
@@ -26,6 +27,7 @@ public class BoardForward implements Serializable {
                 this.table[row][column].setImage(board.getTable()[row][column].getImage());
             }
         }
+        this.flagForward = new FlagForward();
     }
 
     /********************************************************************
@@ -44,5 +46,9 @@ public class BoardForward implements Serializable {
 
     public int getTableLength() {
         return tableLength;
+    }
+
+    public FlagForward getFlagForward() {
+       return flagForward;
     }
 }

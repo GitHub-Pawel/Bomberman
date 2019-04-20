@@ -1,6 +1,7 @@
 package bomberman.engine;
 
 import bomberman.component.BoardForward;
+import bomberman.component.FlagForward;
 import bomberman.network.*;
 import bomberman.component.Block;
 import bomberman.component.Board;
@@ -35,6 +36,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
     private Player[] players;
     private volatile Thread[] bombThreads;
     private int bombCount;
+    private int killedPlayers;
 
 
     /********************************************************************
@@ -47,6 +49,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         this.players = new Player[this.numberOfPlayers];
         this.bombThreads = new Thread[200];        // 200 is maximum number of threads
         this.bombCount = 0;
+        this.killedPlayers = 0;
 
         if (numberOfPlayers == 1) {
             players[0] = new Player(1, 1);
@@ -79,6 +82,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         this.boardForward = new BoardForward(this.board);
         this.server = new Server(portRx, portTx, numberOfPlayers, this.boardForward, this); //
         this.server.broadcastBoardUpdate();
+        this.refreshSounds();
     }
 
     /********************************************************************
@@ -141,6 +145,14 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
 
 
         this.server.broadcastBoardUpdate();
+        this.refreshSounds();
+    }
+
+    public void refreshSounds(){
+        this.boardForward.getFlagForward().setPlayMove(false);
+        this.boardForward.getFlagForward().setPlayBonus(false);
+        this.boardForward.getFlagForward().setPlayBoom(false);
+        this.boardForward.getFlagForward().setPlaykilledPlayer(false);
     }
 
     public void move(byte id, int add2Row, int add2Column){
@@ -153,7 +165,10 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         if (players[id].isStillAlive() == true) {
             if (this.board.getTable()[y_changed][x_changed] instanceof Floor) {
                 changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);               // Player moves into floor
-                Sound.play("sounds\\move.wav");
+
+                //Sound.play("sounds\\move.wav");
+                this.boardForward.getFlagForward().setPlayMove(true);
+
             } else if (this.board.getTable()[y_changed][x_changed] instanceof Bonus) {
                 if (((Bonus) this.board.getTable()[y_changed][x_changed]).isAddBomb()) {
                     players[id].setLimitOfBombs((byte) (players[id].getLimitOfBombs() + 1));        // Collecting addBomb bonus
@@ -161,12 +176,13 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
                     players[id].setPower(players[id].getPower() + 1);                               // Collecting increaseFire bonus
                 }
                 changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);               // Player moves into bonus
-                Sound.play("sounds\\bonus.wav");
+                //Sound.play("sounds\\bonus.wav");
+                this.boardForward.getFlagForward().setPlayBonus(true);
+
             } else if (this.board.getTable()[y_changed][x_changed] instanceof Fire) {
                 players[id].setStillAlive(false);                                               // Killing player when moves into fire
                 changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);
-                //checkPlayerWin();
-                //checkDefeat();
+                this.checkDefeat();
             }
         }
     }
@@ -209,6 +225,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             this.boardForward.setBoardForwardField(players[id].getRow(), players[id].getColumn(), newBomb);
 
             this.server.broadcastBoardUpdate();
+            this.refreshSounds();
             //frame.screenReload();
             //taka metoda jest niepotrzebna, bo kazdy watek do oblsugi poszczegolnych klientow
             //ma referencje do obiektu board utworzonego w klsie ServerEngine,
@@ -223,8 +240,7 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             }else if (this.board.getTable()[row][column] instanceof Player) {
                 if (((Player) this.board.getTable()[row][column]).isStillAlive()) {           // U P D A T E
                     ((Player) this.board.getTable()[row][column]).setStillAlive(false);       // Setting fire to player and killing
-                    //this.checkDefeat();
-                    //this.checkPlayerWin();
+                    this.checkDefeat();
                 }
             }else{
                 this.board.getTable()[row][column] = new Fire();
@@ -236,12 +252,32 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             if (players[i].getRow() == row && players[i].getColumn() == column) {
                 if (players[i].isStillAlive()) {    // U P D A T E
                     players[i].setStillAlive(false);
-                    //this.checkDefeat();
-                    //this.checkPlayerWin();
+                    this.boardForward.getFlagForward().setPlaykilledPlayer(true);
+                    this.checkDefeat();
                     this.board.getTable()[row][column].setImage(new ImageIcon("images\\burnedPlayer.jpg")); // When player had planted the bomb and did not escaped
                     this.boardForward.setBoardForwardField(row, column, new ImageIcon("images\\burnedPlayer.jpg"));
                 }
             }
+        }
+    }
+
+    private void checkDefeat() {
+        for (int i =0; i<this.numberOfPlayers; ++i) {
+            if (this.players[i].isStillAlive() == false) {
+                this.boardForward.getFlagForward().setPlaykilledPlayer(true);
+                this.boardForward.getFlagForward().setStillAlive(this.players[i].getRealId(), false);
+                this.killedPlayers++;
+                this.server.stopThreads(i);
+            }
+        }
+
+        if (this.killedPlayers == this.numberOfPlayers - 1){
+            int iD = 0;
+            while (this.players[iD].isStillAlive() == false) {
+                iD++;
+            }
+            this.players[iD].setWinner(true);
+            this.boardForward.getFlagForward().setWinner(this.players[iD].getRealId(), true);
         }
     }
 
@@ -280,7 +316,9 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
             if(!(tmp instanceof Floor || tmp instanceof Bonus)) break;
         }
 
+        this.boardForward.getFlagForward().setPlayBoom(true);
         this.server.broadcastBoardUpdate();
+        this.refreshSounds();
     }
 
 
@@ -338,7 +376,10 @@ public class ServerEngine implements KeyboardObserver, BombObserver {
         }
 
         this.server.broadcastBoardUpdate();
+        this.refreshSounds();
     }
 
-
+    public Player getPlayers(int i) {
+        return players[i];
+    }
 }

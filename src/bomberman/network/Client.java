@@ -20,6 +20,7 @@ public class Client implements Runnable{
     ObjectOutputStream objectOutputStream;
     ObjectInputStream objectInputStream;
     private boolean continueConnection;
+    private int id;
 
     /********************************************************************
      *                         Constructor                              *
@@ -54,6 +55,11 @@ public class Client implements Runnable{
         try {
             this.objectOutputStream = new ObjectOutputStream(this.clientSocketTx.getOutputStream());
             this.objectInputStream = new ObjectInputStream(this.clientSocketRx.getInputStream());
+
+
+            this.id = objectInputStream.readInt();
+            System.out.print("My id is: ");
+            System.out.println(this.id);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,5 +116,9 @@ public class Client implements Runnable{
         while (this.continueConnection){
             this.boardForwardObserver.boardUpdate(this.receiveBoard());
         }
+    }
+
+    public int getId() {
+        return id;
     }
 }

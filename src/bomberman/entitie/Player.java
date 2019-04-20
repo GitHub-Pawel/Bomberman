@@ -12,6 +12,7 @@ public class Player extends Block {
     private byte plantedBombs;
     private int power;
     private boolean winner;
+    private int realId;
 
 
     /********************************************************************
@@ -68,4 +69,19 @@ public class Player extends Block {
         this.power = power;
     }
 
+    public int getRealId() {
+        return realId;
+    }
+
+    public void setRealId(int realId) {
+        this.realId = realId;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
+    }
 }

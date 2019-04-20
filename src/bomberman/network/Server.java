@@ -65,6 +65,7 @@ public class Server implements ClientDisconnectedObserver {
         for (int i = 0; i<this.numberOfClients; ++i){
             this.clientHandlers[i] = new ClientHandler(this.serverSocketRx.accept(), this.serverSocketTx.accept(), i, this.refToBoardForward, this.refToEngine);    //
             this.clientHandlers[i].subscribe(this);
+            this.refToEngine.getPlayers(i).setRealId(i);
             this.threadsOfClients[i] = new Thread(this.clientHandlers[i]);
             System.out.println("Connected Client NO.:" + i);
         }
@@ -90,6 +91,10 @@ public class Server implements ClientDisconnectedObserver {
         }
     }
 
+    public void stopThreads(int id){
+        this.threadsOfClients[id].interrupt();
+    }
+
     public void broadcastBoardUpdate(){
         for (int i = 0; i<this.numberOfClients; ++i){
             this.clientHandlers[i].sendBoardForward();
@@ -107,5 +112,9 @@ public class Server implements ClientDisconnectedObserver {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ClientHandler getClientHandlers(int id) {
+        return clientHandlers[id];
     }
 }
