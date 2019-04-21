@@ -2,17 +2,20 @@ package bomberman.gui;
 
 import bomberman.engine.ClientEngine;
 import bomberman.engine.ServerEngine;
+import bomberman.network.ServerRunner;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class ServerConstructor {
-    private String serverAddress;
     private int inputPort;
     private int outputPort;
     private int numberOfPlayers;
     private int fieldSize;
+    private ServerRunner serverRunner;
 
     private JPanel panel1;
     private JPanel portPanel;
@@ -36,9 +39,6 @@ public class ServerConstructor {
     private JCheckBox mediumCheckBox;
     private JCheckBox bigCheckBox;
     private JCheckBox veryBigCheckBox;
-    private JTextField serverAddressTitleTextField;
-    private JTextField serverAddressTextField;
-    private JPanel serverAddressPanel;
 
 
     public ServerConstructor() {
@@ -50,8 +50,8 @@ public class ServerConstructor {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
-        serverInputPortTextField.setText("65431");
-        serverOutputPortTextField.setText("65432");
+        serverInputPortTextField.setText("65432");
+        serverOutputPortTextField.setText("65433");
         players2CheckBox.setSelected(true);
         this.numberOfPlayers = 2;
         smallCheckBox.setSelected(true);
@@ -151,15 +151,16 @@ public class ServerConstructor {
         createServerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                serverAddress = serverAddressTextField.getText();
                 try {
                     inputPort = Integer.parseInt(serverInputPortTextField.getText());
                     outputPort = Integer.parseInt(serverOutputPortTextField.getText());
-                }catch(NumberFormatException e1) {
-                }
-                //ServerEngine serverEngine = new ServerEngine(inputPort, outputPort, numberOfPlayers, fieldSize);
-                //ClientEngine clientEngine = new ClientEngine(serverAddress, inputPort, outputPort)
+                }catch(NumberFormatException e1) {}
+                serverRunner = new ServerRunner(inputPort, outputPort, numberOfPlayers, fieldSize);
+                Thread serverThread = new Thread(serverRunner);
+                serverThread.start();
+                ClientEngine clientEngine = new ClientEngine("localhost", inputPort, outputPort);
                 frame.dispose();
+
             }
         });
     }

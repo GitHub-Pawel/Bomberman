@@ -35,6 +35,9 @@ public class ClientConstructor {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
+        serverAddressTextField.setText("localhost");
+        serverInputPortTextField.setText("65432");
+        serverOutputPortTextField.setText("65433");
 
         joinButton.addActionListener(new ActionListener() {
             @Override
@@ -45,7 +48,7 @@ public class ClientConstructor {
                     serverOutputPort = Integer.parseInt(serverOutputPortTextField.getText());
                 }catch(NumberFormatException e1) {
                 }
-                //ClientEngine clientEngine = new ClientEngine(serverAddress, serverInputPort, serverOutputPort);
+                ClientEngine clientEngine = new ClientEngine(serverAddress, serverInputPort, serverOutputPort);
                 frame.dispose();
             }
         });
