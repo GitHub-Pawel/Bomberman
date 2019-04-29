@@ -69,8 +69,10 @@ public class Client implements Runnable{
 
     public void sendKeyEvent(int keyEvent){
         try {
-            this.objectOutputStream.reset();
+            //this.objectOutputStream.reset();
+            this.objectOutputStream.flush();
             this.objectOutputStream.writeObject(keyEvent);
+            this.objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

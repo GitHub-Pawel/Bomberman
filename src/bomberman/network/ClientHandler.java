@@ -42,6 +42,7 @@ class ClientHandler implements Runnable{
             this.objectOutputStream = new ObjectOutputStream(this.clientTx.getOutputStream());
 
             this.objectOutputStream.writeInt(id);  //First message to client is his Id
+            this.objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,7 +68,9 @@ class ClientHandler implements Runnable{
     public void sendBoardForward(){
         try{
             this.objectOutputStream.reset();
+            this.objectOutputStream.flush();
             this.objectOutputStream.writeObject(this.refToBoardForward); //
+            this.objectOutputStream.flush();
         } catch (IOException e) {
             //e.printStackTrace();
         }
