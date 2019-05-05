@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="UDP_multicast:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/UDP_multicast_jar</output-path>
+    <root id="root">
+      <element id="archive" name="UDP_multicast.jar">
+        <element id="module-output" name="zad3UDPMulticast" />
+      </element>
+    </root>
+  </artifact>
+</component>

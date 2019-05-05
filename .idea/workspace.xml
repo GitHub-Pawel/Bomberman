@@ -8,9 +8,47 @@
   <component name="ChangeListManager">
     <list default="true" id="557a7371-205b-4e02-b1b9-a5d683c1d062" name="Default Changelist" comment="Simple connection client-server finally working properly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bomberman.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Bomberman.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bomberman/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bomberman/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/artifacts/UDP_multicast_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/UDP_multicast.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/ChatGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/ChatGUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/ChatGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/JoinGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/JoinGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/MessageObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/Runner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/UDPMulticastClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/UDPMulticastServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/out/production/UDP_multicast/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/ChatGUI.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/ChatGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/JoinGUI.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/JoinGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/MessageObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/Runner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/UDPMulticastClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_multicast/src/UDPMulticastServer.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +58,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -108,8 +146,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,7 +308,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88119000" />
+    <option name="totallyTimeSpent" value="88335000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -284,7 +322,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21744967" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22416107" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
