@@ -1,0 +1,5 @@
+zad1Client_solved: ClientSocket123
+zad2Server_solved: SerwerTCP314
+zad3UDPMulticast_solved: 272DatagramProtocol
+zad4Client_solved: CompressedEncrypted5519
+zad4Server: EncryptedCompressed65191830
